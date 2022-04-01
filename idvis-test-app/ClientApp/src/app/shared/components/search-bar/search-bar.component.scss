@@ -1,0 +1,38 @@
+@import "../../../../styles/mixins.scss";
+
+.app-search-bar {
+    padding: 10px;
+    position: relative;
+
+    &__search-icon {
+        position: absolute;
+        top: 12px;
+        left: 14px;
+        @include mat-icon-size(19px);
+    }
+
+    &__input {
+        padding: 5px 30px;
+        width: 100%;
+        border-radius: 5px;
+        border-width: 1px;
+        border-style: solid;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+    &__clear-icon {
+        top: 12px;
+        right: 14px;
+        width: 25px;
+        height: 25px;
+        line-height: 26px;
+        position: absolute;
+
+        mat-icon {
+            @include mat-icon-size(19px);
+        }
+    }
+}

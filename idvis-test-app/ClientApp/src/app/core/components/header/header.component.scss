@@ -1,0 +1,33 @@
+@import "../../../../styles/smart-grid.scss";
+@import "../../../../styles/mixins.scss";
+
+.app-header {
+    .toolbar {
+        &__filler {
+            flex: 1 1 auto;
+        }
+
+        &__title {
+            width: 200px;
+            align-self: end;
+            height: 85%;
+            padding: 10px;
+            margin-left: 16px;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            text-align: center;
+        }
+
+        mat-icon {
+            @include mat-icon-size(32px);
+        }
+    }
+
+    &__user-menu {
+        display: block;
+
+        @include xs-block() {
+            display: none;
+        }
+    }
+}

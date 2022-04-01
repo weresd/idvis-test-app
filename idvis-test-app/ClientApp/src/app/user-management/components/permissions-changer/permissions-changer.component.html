@@ -1,0 +1,11 @@
+<div class="app-permissions-changer">
+    <ng-container *ngFor="let permission of permissions">
+        <app-checkbox
+            [checked]="isChecked(permission)"
+            (changeValue)="change(permission, $event)"
+            [value]="permission.id"
+            [disabled]="readonly"
+        >{{ permission.name }}</app-checkbox>
+        <mat-divider></mat-divider>
+    </ng-container>
+</div>

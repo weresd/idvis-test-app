@@ -1,0 +1,35 @@
+@import "../../../../styles/mixins.scss";
+
+.app-entities-changer {
+    &__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px;
+
+        p {
+            margin: 0;
+            padding-left: 15px;
+        }
+    }
+
+    &__item-wrapper {
+        padding-left: 30px;
+    }
+
+    &__item {
+        cursor: pointer;
+
+        span {
+            padding-left: 10px;
+        }
+
+        mat-icon {
+            @include mat-icon-size(32px);
+        }
+    }
+
+    &__items {
+        padding: 0;
+    }
+}
