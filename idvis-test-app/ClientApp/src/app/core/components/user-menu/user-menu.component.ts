@@ -1,5 +1,5 @@
 import { OnInit, Input, Component } from '@angular/core';
-import { MenuPositionX } from '@angular/material';
+import { MenuPositionX } from '@angular/material/menu';
 
 import { User } from '../../entities';
 import { AuthService } from '../../services/auth.service';

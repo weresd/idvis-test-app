@@ -1,4 +1,4 @@
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs/operators';
 
 import { Group, Permission, RepositoriesFabrica, SpinnerService, User } from '@app/core';
