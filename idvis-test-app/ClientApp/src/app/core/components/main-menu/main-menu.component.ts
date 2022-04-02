@@ -25,6 +25,7 @@ export class MainMenuComponent
      */
     public menuItems: Array<MenuItem> = [
         new MenuItem('User management', '/user-management'),
+        new MenuItem('Dashboards', '/dashboards'),
     ];
 
     /**
