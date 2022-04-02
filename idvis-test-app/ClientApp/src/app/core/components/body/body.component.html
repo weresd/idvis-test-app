@@ -1,6 +1,6 @@
 <div class="app-body">
     <mat-sidenav-container class="app-body__sidenav-container">
-        <mat-sidenav #sidenav mode="over" fixedInViewport="true">
+        <mat-sidenav #sidenav mode="over" fixedInViewport="true" autoFocus="false">
             <h3>Main menu</h3>
             <mat-divider></mat-divider>
             <app-main-menu (itemClick)="sidenav.close()"></app-main-menu>
