@@ -3,7 +3,14 @@
         <button mat-icon-button (click)="burgerClick.emit(true)">
             <mat-icon>menu</mat-icon>
         </button>
-        <span class="toolbar__title">{{ titleService.title$ | async }}</span>
+        <span class="toolbar__title">
+            <span class="toolbar__title-wrapper">
+                <span class="toolbar__app-title" [class.toolbar__app-title-small]="titleService.pageTitle$ | async">
+                    {{ titleService.appTitle$ | async }}
+                </span>
+                <span class="toolbar__page-title">{{ titleService.pageTitle$ | async }}</span>
+            </span>
+        </span>
         <span class="toolbar__filler"></span>
         <app-user-menu class="app-header__user-menu"></app-user-menu>
     </mat-toolbar>

@@ -8,14 +8,31 @@
         }
 
         &__title {
-            width: 200px;
+            overflow: hidden;
+            max-width: 250px;
             align-self: end;
-            height: 85%;
-            padding: 10px;
+            height: 90%;
+            padding: 10px 20px;
             margin-left: 16px;
-            border-top-left-radius: 2px;
-            border-top-right-radius: 2px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-direction: column;
+            text-align: left;
+            line-height: 1.15em;
+            font-weight: 100;
+        }
+
+        &__title-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-self: flex-start;
+        }
+
+        &__app-title-small {
+            text-align: left;
+            font-size: .6em;
+            line-height: 1.15em;
         }
 
         mat-icon {

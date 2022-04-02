@@ -28,6 +28,14 @@ export class TitleService
      */
     public constructor(public browserTitle: Title)
     {
+        this.appTitle$.subscribe({
+            next: appTitle => this.updateBrowserTitle(appTitle, this.pageTitle$.getValue())
+        });
+
+        this.pageTitle$.subscribe({
+            next: pageTitle => this.updateBrowserTitle(this.appTitle$.getValue(), pageTitle)
+        });
+
         return;
     }
 
@@ -40,7 +48,6 @@ export class TitleService
      */
     public setAppTitle(title: string): this
     {
-        this.browserTitle.setTitle(title);
         this.appTitle$.next(title);
 
         return this;
@@ -58,5 +65,28 @@ export class TitleService
         this.pageTitle$.next(title);
 
         return this;
+    }
+
+    /**
+     * Updates browser title.
+     *
+     * @param {string} appTitle
+     * @param {string} pageTitle
+     *
+     * @returns {void}
+     */
+    private updateBrowserTitle(appTitle: string, pageTitle: string): void
+    {
+        let browserTitle = '';
+
+        if (appTitle.length > 0) {
+            browserTitle += appTitle;
+
+            if (pageTitle.length > 0) {
+                browserTitle += ' | ' + pageTitle;
+            }
+        }
+
+        this.browserTitle.setTitle(browserTitle);
     }
 }
