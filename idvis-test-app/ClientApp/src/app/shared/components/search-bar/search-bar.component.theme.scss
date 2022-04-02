@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import "../../../../styles/smart-grid.scss";
 
 @mixin app-search-bar-component-theme($theme) {
@@ -7,11 +8,11 @@
     .app-search-bar {
         &__search-icon,
         &__clear-icon {
-            color: mat-color($accent);
+            color: mat.get-color-from-palette($accent);
         }
 
         &__input {
-            border-color: mat-color($primary, default, .5);
+            border-color: mat.get-color-from-palette($primary, default, .5);
         }
     }
 }

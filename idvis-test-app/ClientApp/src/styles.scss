@@ -1,4 +1,4 @@
-@import "~@angular/material/theming";
+@use '~@angular/material' as mat;
 
 @import "styles/custom-palettes.scss";
 @import "styles/font-faces.scss";
@@ -8,19 +8,19 @@
 @import "app/shared/shared.theme.scss";
 @import "app/core/core.theme.scss";
 
-@include mat-core();
+@include mat.core();
 
 body {
     font-family: 'Source Sans Pro';
 }
 
-$primary-palette: mat-palette($mat-grey);
-$accent-palette: mat-palette($mat-green-custom);
-$warn-palette: mat-palette($mat-red);
+$primary-palette: mat.define-palette(mat.$grey-palette);
+$accent-palette: mat.define-palette($mat-green-custom);
+$warn-palette: mat.define-palette(mat.$red-palette);
 
-$custom-theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+$custom-theme: mat.define-light-theme($primary-palette, $accent-palette, $warn-palette);
 
-@include angular-material-theme($custom-theme);
+@include mat.all-component-themes($custom-theme);
 
 @include app-core-module-theme($custom-theme);
 @include app-shared-module-theme($custom-theme);

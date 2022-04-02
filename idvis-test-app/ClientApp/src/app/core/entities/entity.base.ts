@@ -1,4 +1,4 @@
-import { isString } from 'util';
+import * as _ from 'lodash';
 import { id } from '@app/shared';
 
 export class EntityBase
@@ -17,7 +17,7 @@ export class EntityBase
      */
     public constructor(data: any = {})
     {
-        if (data.id && isString(data.id))
+        if (data.id && _.isString(data.id))
         {
             this.id = data.id;
         }

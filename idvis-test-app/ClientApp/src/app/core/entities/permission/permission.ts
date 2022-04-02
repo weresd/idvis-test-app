@@ -1,4 +1,4 @@
-import { isString } from 'util';
+import * as _ from 'lodash';
 import { INamedEntity } from '@app/shared';
 
 import { EntityBase } from '../entity.base';
@@ -21,7 +21,7 @@ export class Permission extends EntityBase implements INamedEntity
     {
         super(data);
 
-        if (data.name && isString(data.name))
+        if (data.name && _.isString(data.name))
         {
             this.name = data.name;
         }

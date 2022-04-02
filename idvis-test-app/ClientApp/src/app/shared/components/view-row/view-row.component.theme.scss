@@ -1,9 +1,10 @@
+@use '~@angular/material' as mat;
 @import "../../../../styles/smart-grid.scss";
 
 @mixin app-view-row-component-theme($theme) {
     $primary: map-get($theme, primary);
 
     .app-view-row {
-        background-color: mat-color($primary, default, .5);
+        background-color: mat.get-color-from-palette($primary, default, .5);
     }
 }

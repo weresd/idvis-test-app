@@ -1,4 +1,4 @@
-@import "~@angular/material/theming";
+@use '~@angular/material' as mat;
 
 @mixin app-checkbox-component-theme($theme) {
     $primary: map-get($theme, primary);
@@ -6,16 +6,16 @@
 
     .app-checkbox {
         &--checked {
-            background-color: mat-color($accent, lighter, .4);
+            background-color: mat.get-color-from-palette($accent, lighter, .4);
         }
 
         &__fake-checkbox {
-            background-color: mat-color($primary, default, .5);
+            background-color: mat.get-color-from-palette($primary, default, .5);
         }
 
         &__checkbox:disabled + &__fake-checkbox {
             mat-icon {
-                color: mat-color($primary);
+                color: mat.get-color-from-palette($primary);
             }
         }
     }

@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import "~@angular/material/theming";
 
 @mixin app-header-component-theme($theme) {
@@ -6,11 +7,11 @@
 
     .app-header {
         & .toolbar {
-            background: mat-color($primary, lighter-contrast, .8);
-            color: mat-color($primary, darker-contrast);
+            background: mat.get-color-from-palette($primary, lighter-contrast, .8);
+            color: mat.get-color-from-palette($primary, darker-contrast);
 
             &__title {
-                background-color: mat-color($accent);
+                background-color: mat.get-color-from-palette($accent);
             }
         }
     }

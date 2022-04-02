@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import "../../../../styles/smart-grid.scss";
 
 @mixin app-user-management-dashboard-component-theme($theme) {
@@ -8,7 +9,7 @@
         &__search-bar,
         &__entities-changer,
         &__tools {
-            background: mat-color($primary, lighter);
+            background: mat.get-color-from-palette($primary, lighter);
         }
     }
 }

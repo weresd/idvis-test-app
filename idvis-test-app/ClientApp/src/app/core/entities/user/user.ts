@@ -1,4 +1,4 @@
-import { isArray, isString } from 'util';
+import * as _ from 'lodash';
 import { INamedEntity } from '@app/shared';
 
 import { EntityBase } from '../entity.base';
@@ -49,27 +49,27 @@ export class User extends EntityBase implements INamedEntity
     {
         super(data);
 
-        if (data.name && isString(data.name))
+        if (data.name && _.isString(data.name))
         {
             this.name = data.name;
         }
 
-        if (data.login && isString(data.login))
+        if (data.login && _.isString(data.login))
         {
             this.login = data.login;
         }
 
-        if (data.email && isString(data.email))
+        if (data.email && _.isString(data.email))
         {
             this.email = data.email;
         }
 
-        if (data.permissions && isArray(data.permissions))
+        if (data.permissions && _.isArray(data.permissions))
         {
             this.permissions = data.permissions;
         }
 
-        if (data.groups && isArray(data.groups))
+        if (data.groups && _.isArray(data.groups))
         {
             this.groups = data.groups;
         }
