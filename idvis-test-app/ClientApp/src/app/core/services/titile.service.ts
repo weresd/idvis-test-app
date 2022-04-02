@@ -8,11 +8,18 @@ import { BehaviorSubject } from 'rxjs';
 export class TitleService
 {
     /**
-     * Title state.
+     * Application title state.
      *
      * @type {BehaviorSubject<string>}
      */
-    public readonly title$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+    public readonly appTitle$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+    /**
+     * Page title state.
+     *
+     * @type {BehaviorSubject<string>}
+     */
+    public readonly pageTitle$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
     /**
      * Constructor.
@@ -25,15 +32,31 @@ export class TitleService
     }
 
     /**
-     * Sets title.
+     * Sets app title.
      *
      * @param {string} title
      *
-     * @returns {void}
+     * @returns {TitleService}
      */
-    public setTitle(title: string): void
+    public setAppTitle(title: string): this
     {
         this.browserTitle.setTitle(title);
-        this.title$.next(title);
+        this.appTitle$.next(title);
+
+        return this;
+    }
+
+    /**
+     * Sets page title.
+     *
+     * @param {string} title
+     *
+     * @returns {TitleService}
+     */
+    public setPageTitle(title: string): this
+    {
+        this.pageTitle$.next(title);
+
+        return this;
     }
 }
