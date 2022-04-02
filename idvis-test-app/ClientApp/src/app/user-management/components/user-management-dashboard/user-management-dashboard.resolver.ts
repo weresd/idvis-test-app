@@ -44,7 +44,7 @@ export class UserManagementDashboardResolver implements Resolve<any>
                 map(([users, groups, permissions]) => {
                     return { users: users, groups: groups, permissions: permissions };
                 }),
-                tap(() => this.titleService.setTitle('User Management'))
+                tap(() => this.titleService.setAppTitle('User Management').setPageTitle(''))
             );
     }
 }
