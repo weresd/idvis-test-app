@@ -1,4 +1,4 @@
-namespace idvis_test_app
+namespace Idvis.Test.App
 {
     public class WeatherForecast
     {

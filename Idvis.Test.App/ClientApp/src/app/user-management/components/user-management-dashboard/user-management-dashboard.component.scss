@@ -10,32 +10,6 @@
     display: flex;
     flex-direction: column;
 
-    &__toolbar {
-        @include col();
-        @include size(24);
-        padding-top: 15px;
-        padding-bottom: 15px;
-        display: flex;
-
-        @include sm-block() {
-            display: block;
-        }
-
-        button {
-            margin-left: 15px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-
-            mat-icon {
-                @include mat-icon-size(32px);
-            }
-        }
-
-        &-filler {
-            flex-grow: 1;
-        }
-    }
-
     &__row {
         flex-grow: 1;
         @include row-flex();

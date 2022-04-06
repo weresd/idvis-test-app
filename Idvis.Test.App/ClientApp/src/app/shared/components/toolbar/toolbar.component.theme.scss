@@ -1,0 +1,9 @@
+@use '~@angular/material' as mat;
+
+@mixin app-toolbar-component-theme($theme) {
+    $primary: map-get($theme, primary);
+
+    .app-toolbar {
+        background: mat.get-color-from-palette($primary, lighter);
+    }
+}

@@ -4,4 +4,6 @@ export * from './dialog-buttons';
 export * from './entities-changer';
 export * from './expansion-panel';
 export * from './search-bar';
+export * from './toolbar';
+export * from './toolbar-button';
 export * from './view-row';

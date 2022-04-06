@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace idvis_test_app.Controllers
+namespace Idvis.Test.App.Controllers
 {
     [ApiController]
     [Route("[controller]")]

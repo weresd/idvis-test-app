@@ -8,6 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 
+import { ToolbarComponent, ToolbarButtonComponent } from './components';
 import { EntitiesChangerComponent, ConfirmDialogComponent, DialogButtonsComponent } from './components';
 import { SearchBarComponent, ExpansionPanelComponent, CheckboxComponent, ViewRowComponent } from './components';
 import { NamedEntitySearchPipe } from './pipes';
@@ -21,7 +22,9 @@ import { NamedEntitySearchPipe } from './pipes';
         NamedEntitySearchPipe,
         ExpansionPanelComponent,
         CheckboxComponent,
-        ViewRowComponent
+        ViewRowComponent,
+        ToolbarComponent,
+        ToolbarButtonComponent
     ],
     imports: [
         CommonModule,
@@ -41,7 +44,9 @@ import { NamedEntitySearchPipe } from './pipes';
         NamedEntitySearchPipe,
         ExpansionPanelComponent,
         CheckboxComponent,
-        ViewRowComponent
+        ViewRowComponent,
+        ToolbarComponent,
+        ToolbarButtonComponent
     ],
     providers: []
 })

@@ -1,30 +1,20 @@
 <div class="app-user-management-dashboard">
-    <div class="app-user-management-dashboard__toolbar">
-        <div class="app-user-management-dashboard__toolbar-first">
-            <mat-menu #dashboardTools="matMenu">
-                <button mat-menu-item (click)="openEditUserDialog(null)">Add user</button>
-                <button mat-menu-item (click)="openEditGroupDialog(null)">Add group</button>
-            </mat-menu>
+    <app-toolbar>
+        <mat-menu #dashboardTools="matMenu">
+            <button mat-menu-item (click)="openEditUserDialog(null)">Add user</button>
+            <button mat-menu-item (click)="openEditGroupDialog(null)">Add group</button>
+        </mat-menu>
 
-            <button mat-raised-button [matMenuTriggerFor]="dashboardTools">
-                <mat-icon color="accent">add</mat-icon>
-                <span>Add</span>
-            </button>
+        <app-toolbar-button [matMenuTriggerFor]="dashboardTools" icon="add" text="Add">
+        </app-toolbar-button>
 
-            <button mat-raised-button *ngIf="selectedEntity != null" (click)="editSelectedEntity()">
-                <mat-icon color="accent">edit</mat-icon>
-                <span>Edit</span>
-            </button>
+        <app-toolbar-button *ngIf="selectedEntity != null" (click)="editSelectedEntity()" icon="edit" text="Edit">
+        </app-toolbar-button>
 
-            <button mat-raised-button *ngIf="selectedEntity != null" (click)="deleteSelectedEntity()">
-                <mat-icon color="accent">delete</mat-icon>
-                <span>Delete</span>
-            </button>
-        </div>
+        <app-toolbar-button *ngIf="selectedEntity != null" (click)="deleteSelectedEntity()" icon="delete" text="Delete">
+        </app-toolbar-button>
+    </app-toolbar>
 
-        <span class="app-user-management-dashboard__toolbar-filler"></span>
-    </div>
-    <mat-divider></mat-divider>
     <div class="app-user-management-dashboard__row">
         <div class="app-user-management-dashboard__entities">
             <div class="app-user-management-dashboard__search-bar">

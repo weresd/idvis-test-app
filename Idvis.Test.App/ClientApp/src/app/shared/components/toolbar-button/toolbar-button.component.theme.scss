@@ -1,0 +1,9 @@
+@use '~@angular/material' as mat;
+
+@mixin app-toolbar-button-component-theme($theme) {
+    $primary: map-get($theme, primary);
+
+    .app-toolbar-button {
+        // background: mat.get-color-from-palette($primary, lighter);
+    }
+}
