@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { PermissionRepository } from './permission';
 import { UserRepository } from './user';
 import { GroupRepository } from './group';
+import { TileRepository } from './tile';
 import { Storages } from '../storages';
 
 @Injectable()
@@ -46,5 +47,15 @@ export class RepositoriesFabrica
     public getPermissionRepository(): PermissionRepository
     {
         return new PermissionRepository(this.storageService);
+    }
+
+    /**
+     * Returns tile repository.
+     *
+     * @returns {TileRepository}
+     */
+    public getTileRepository(): TileRepository
+    {
+        return new TileRepository(this.storageService);
     }
 }

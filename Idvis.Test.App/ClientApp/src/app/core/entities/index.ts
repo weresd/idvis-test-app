@@ -1,5 +1,6 @@
 export * from './group';
 export * from './permission';
+export * from './tile';
 export * from './user';
 export * from './entity.base';
 export * from './iread';
