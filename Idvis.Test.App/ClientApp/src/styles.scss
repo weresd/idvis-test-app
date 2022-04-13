@@ -1,10 +1,11 @@
 @use '~@angular/material' as mat;
 
-@import "styles/custom-palettes.scss";
+@import "styles/mat-custom/_mat-custom.scss";
 @import "styles/font-faces.scss";
 @import "styles/reset.scss";
 
 @import "app/user-management/user-management.theme.scss";
+@import "app/dashboards/dashboards.theme.scss";
 @import "app/shared/shared.theme.scss";
 @import "app/core/core.theme.scss";
 
@@ -25,3 +26,6 @@ $custom-theme: mat.define-light-theme($primary-palette, $accent-palette, $warn-p
 @include app-core-module-theme($custom-theme);
 @include app-shared-module-theme($custom-theme);
 @include app-user-management-module-theme($custom-theme);
+@include app-dashboards-module-theme($custom-theme);
+
+@include app-mat-custom($custom-theme);

@@ -1,0 +1,8 @@
+@import "./palettes.scss";
+@import "./mat-dialog.scss";
+@import "./mat-form-field.scss";
+
+@mixin app-mat-custom($theme) {
+    @include app-mat-custom-dialog($theme);
+    @include app-mat-custom-form-field($theme);
+}

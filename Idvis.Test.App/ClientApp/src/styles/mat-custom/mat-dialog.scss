@@ -1,0 +1,16 @@
+@mixin app-mat-custom-dialog($theme) {
+    $primary: map-get($theme, primary);
+
+    .app-custom-dialog {
+        mat-dialog-container {
+            padding: 0;
+            border-radius: 0;
+            background-color: darken(mat.get-color-from-palette($primary, lighter), 5);
+        }
+
+        .mat-dialog-content {
+            padding: 0;
+            margin: 0;
+        }
+    }
+}

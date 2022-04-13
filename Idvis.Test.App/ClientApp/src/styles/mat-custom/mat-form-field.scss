@@ -1,0 +1,50 @@
+@mixin app-mat-custom-form-field($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+    .mat-form-field-appearance-fill {
+        .mat-form-field-wrapper {
+            padding-bottom: 0;
+            margin-bottom: 0.671875em;
+
+            .mat-form-field-flex {
+                padding-top: .375em;
+                padding-right: 0;
+                border-radius: 4px;
+                box-shadow: 0 1px 2px mat.get-color-from-palette($primary);
+                background-color: mat.get-color-from-palette($primary, lighter);
+
+                .mat-form-field-infix {
+                    padding-bottom: .375em
+                }
+            }
+
+            .mat-form-field-underline {
+                display: none;
+            }
+        }
+
+        &.mat-form-field-invalid {
+            .mat-form-field-flex {
+                border: 1px solid mat.get-color-from-palette($warn);
+                box-shadow: 0 0 4px mat.get-color-from-palette($warn);
+            }
+
+            mat-icon {
+                color: mat.get-color-from-palette($warn);
+            }
+        }
+
+        &.ng-valid {
+            .mat-form-field-flex {
+                border: 1px solid mat.get-color-from-palette($accent);
+                box-shadow: 0 0 4px mat.get-color-from-palette($accent, lighter);
+            }
+        }
+
+        mat-icon {
+            color: mat.get-color-from-palette($accent);
+        }
+    }
+}
