@@ -1,0 +1,22 @@
+@use '~@angular/material' as mat;
+
+@mixin app-tile-menu-component-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+
+    .app-tile-menu {
+        &__menu {
+            &-items {
+                border: 1px solid mat.get-color-from-palette($accent);
+                background-color: mat.get-color-from-palette($primary, lighter);
+
+                &::before {
+                    border-bottom-color: mat.get-color-from-palette($accent);
+                }
+                &::after {
+                    border-bottom-color: mat.get-color-from-palette($primary, lighter);
+                }
+            }
+        }
+    }
+}

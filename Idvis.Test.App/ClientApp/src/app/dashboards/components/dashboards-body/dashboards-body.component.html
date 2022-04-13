@@ -1,5 +1,15 @@
 <div class="app-dashboards-body">
-    <div class="app-dashboards-body__toolbar">
-
+    <app-toolbar align="right">
+        <app-toolbar-button icon="tab" text="Add Image Tile" (click)="openAddTileFormWindow()"></app-toolbar-button>
+        <app-toolbar-button icon="save" text="Save" (click)="saveTilesChanges()"></app-toolbar-button>
+        <app-toolbar-button icon="block" text="Cancel" (click)="cancelTilesChanges()"></app-toolbar-button>
+    </app-toolbar>
+    <div class="app-dashboards-body__tiles">
+        <app-image-tile
+            *ngFor="let tile of tiles"
+            [tile]="tile"
+            (remove)="removeTileHandler(tile)"
+            (update)="updateTileHandler(tile, $event)"
+        ></app-image-tile>
     </div>
 </div>

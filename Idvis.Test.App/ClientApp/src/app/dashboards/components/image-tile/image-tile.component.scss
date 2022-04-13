@@ -1,0 +1,18 @@
+.app-image-tile {
+    width: 800px;
+    height: 500px;
+    border-radius: 5px;
+    margin: 0.7em 0;
+    position: relative;
+
+    &__menu {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__image{
+        padding: 0;
+    }
+}

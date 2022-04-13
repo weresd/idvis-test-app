@@ -1,3 +1,7 @@
-@mixin app-dashboards-module-theme($theme) {
+@import "./components/image-tile/image-tile.component.theme.scss";
+@import "./components/tile-menu/tile-menu.component.theme.scss";
 
+@mixin app-dashboards-module-theme($theme) {
+    @include app-image-tile-component-theme($theme);
+    @include app-tile-menu-component-theme($theme);
 }

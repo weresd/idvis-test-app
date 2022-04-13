@@ -1,0 +1,8 @@
+<div class="app-tile-menu">
+    <button mat-flat-button color="accent" [matMenuTriggerFor]="menu" class="app-tile-menu__menu-button">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before" class="app-tile-menu__menu-items">
+        <ng-content></ng-content>
+    </mat-menu>
+</div>

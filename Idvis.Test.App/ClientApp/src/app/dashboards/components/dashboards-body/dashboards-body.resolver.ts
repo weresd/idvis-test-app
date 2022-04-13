@@ -35,7 +35,7 @@ export class DashboardsBodyResolver implements Resolve<any>
     {
         this.spinnerService.show();
 
-        return of('temp data').pipe(
+        return this.repositoriesFabrica.getTileRepository().find().pipe(
             tap(() => this.titleService.setAppTitle('Dashboards').setPageTitle('New Dashboard'))
         );
     }

@@ -1,0 +1,35 @@
+<div class="app-tile-form-dialog">
+    <app-modal-form-frame
+        [title]="(tile.id === null ? 'Add' : 'Edit') + ' Image Tile'"
+        (confirm)="save()"
+        (cancel)="dialogRef.close(null)"
+    >
+        <form class="app-tile-form-dialog__form" [formGroup]="formGroup" mat-dialog-content>
+            <mat-form-field appearance="fill" class="app-custom-input">
+                <mat-label>Image Source</mat-label>
+                <input matInput type="text" #img [formControl]="formGroup.get('img')">
+                <button
+                    matSuffix
+                    mat-icon-button
+                    *ngIf="img.value"
+                    (click)="clearField(formGroup.get('img'))"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Image Title</mat-label>
+                <input matInput type="text" #title [formControl]="formGroup.get('title')">
+                <button
+                    matSuffix
+                    mat-icon-button
+                    *ngIf="title.value"
+                    (click)="clearField(formGroup.get('title'))"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </form>
+    </app-modal-form-frame>
+</div>
