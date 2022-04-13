@@ -3,6 +3,7 @@ export * from './confirm-dialog';
 export * from './dialog-buttons';
 export * from './entities-changer';
 export * from './expansion-panel';
+export * from './modal-form-frame';
 export * from './search-bar';
 export * from './toolbar';
 export * from './toolbar-button';

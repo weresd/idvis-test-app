@@ -1,0 +1,15 @@
+<div class="app-modal-form-frame">
+    <div class="app-modal-form-frame__header">
+        <p>{{ title }}</p>
+        <button mat-icon-button (click)="cancel.emit()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="app-modal-form-frame__body">
+        <ng-content></ng-content>
+    </div>
+    <div class="app-modal-form-frame__footer">
+        <button mat-raised-button (click)="confirm.emit()">{{ confirmButtonText }}</button>
+        <button mat-raised-button (click)="cancel.emit()">{{ cancelButtonText }}</button>
+    </div>
+</div>

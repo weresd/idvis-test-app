@@ -1,0 +1,38 @@
+@import "../../../../styles/mixins.scss";
+
+.app-modal-form-frame {
+    &__header {
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        padding: 5px 5px 5px 20px;
+
+        p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        mat-icon {
+            @include mat-icon-size(36px);
+        }
+    }
+
+    &__footer {
+        background-color: black;
+        color: white;
+        text-align: right;
+        padding: 15px;
+
+        button {
+            padding: 7px 14px;
+            font-size: 1.08em;
+            margin-left: 10px;
+            font-family: inherit;
+            min-width: 34px;
+        }
+    }
+}
