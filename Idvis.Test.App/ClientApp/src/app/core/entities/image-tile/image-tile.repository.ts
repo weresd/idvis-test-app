@@ -2,20 +2,20 @@ import { Inject, Injectable } from '@angular/core';
 
 import { Storages } from '../../storages/storages';
 import { RepositoryBase } from '../repository.base';
-import { Tile } from './tile';
+import { ImageTile } from './image-tile';
 
 @Injectable()
-export class TileRepository extends RepositoryBase<Tile>
+export class ImageTileRepository extends RepositoryBase<ImageTile>
 {
     /**
      * @inheritdoc
      */
-    protected storageKey: string = 'tiles';
+    protected storageKey: string = 'image-tiles';
 
     /**
      * @inheritdoc
      */
-    protected entityType: any = Tile;
+    protected entityType: any = ImageTile;
 
     /**
      * @inheritdoc

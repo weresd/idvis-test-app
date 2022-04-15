@@ -1,15 +1,15 @@
 import * as _ from 'lodash';
 
-import { EntityBase } from '../entity.base';
+import { Tile } from '../tile';
 
-export abstract class Tile extends EntityBase
+export class ImageTile extends Tile
 {
     /**
-     * Tile title.
+     * Tile image.
      *
      * @type {string}
      */
-    public title: string;
+    public img: string;
 
     /**
      * Constructor.
@@ -20,9 +20,9 @@ export abstract class Tile extends EntityBase
     {
         super(data);
 
-        if (data.title && _.isString(data.title))
+        if (data.img && _.isString(data.img))
         {
-            this.title = data.title;
+            this.img = data.img;
         }
     }
 }

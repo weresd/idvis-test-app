@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { PermissionRepository } from './permission';
 import { UserRepository } from './user';
 import { GroupRepository } from './group';
-import { TileRepository } from './tile';
+import { ImageTileRepository } from './image-tile';
 import { Storages } from '../storages';
 
 @Injectable()
@@ -50,12 +50,12 @@ export class RepositoriesFabrica
     }
 
     /**
-     * Returns tile repository.
+     * Returns image tile repository.
      *
-     * @returns {TileRepository}
+     * @returns {ImageTileRepository}
      */
-    public getTileRepository(): TileRepository
+    public getImageTileRepository(): ImageTileRepository
     {
-        return new TileRepository(this.storageService);
+        return new ImageTileRepository(this.storageService);
     }
 }
