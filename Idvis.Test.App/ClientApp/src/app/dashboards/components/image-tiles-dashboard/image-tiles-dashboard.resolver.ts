@@ -6,7 +6,7 @@ import { map, tap } from 'rxjs/operators';
 import { RepositoriesFabrica, SpinnerService, TitleService } from '@app/core';
 
 @Injectable()
-export class DashboardsBodyResolver implements Resolve<any>
+export class ImageTilesDashboardResolver implements Resolve<any>
 {
     /**
      * Constructor.

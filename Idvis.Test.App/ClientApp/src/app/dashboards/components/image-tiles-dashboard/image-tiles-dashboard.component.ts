@@ -6,11 +6,11 @@ import { RepositoriesFabrica, SpinnerService, Tile } from '@app/core';
 import { ImageTileWindowsService } from '../image-tile';
 
 @Component({
-    selector: 'app-dashboards-body',
-    templateUrl: './dashboards-body.component.html',
-    styleUrls: ['./dashboards-body.component.scss']
+    selector: 'app-image-tiles-dashboard',
+    templateUrl: './image-tiles-dashboard.component.html',
+    styleUrls: ['./image-tiles-dashboard.component.scss']
 })
-export class DashboardsBodyComponent implements OnInit
+export class ImageTilesDashboardComponent implements OnInit
 {
     /**
      * Tiles.

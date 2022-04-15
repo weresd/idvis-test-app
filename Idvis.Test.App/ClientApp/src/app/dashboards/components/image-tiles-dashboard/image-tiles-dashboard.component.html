@@ -1,10 +1,10 @@
-<div class="app-dashboards-body">
+<div class="app-image-tiles-dashboard">
     <app-toolbar align="right">
         <app-toolbar-button icon="tab" text="Add Image Tile" (click)="openAddTileFormWindow()"></app-toolbar-button>
         <app-toolbar-button icon="save" text="Save" (click)="saveTilesChanges()"></app-toolbar-button>
         <app-toolbar-button icon="block" text="Cancel" (click)="cancelTilesChanges()"></app-toolbar-button>
     </app-toolbar>
-    <div class="app-dashboards-body__tiles">
+    <div class="app-image-tiles-dashboard__tiles">
         <app-image-tile
             *ngFor="let tile of tiles"
             [tile]="tile"

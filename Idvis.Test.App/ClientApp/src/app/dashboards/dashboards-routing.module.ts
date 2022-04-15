@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardsBodyComponent, DashboardsBodyResolver } from './components';
+import { ImageTilesDashboardComponent, ImageTilesDashboardResolver } from './components';
 
 const routes: Routes = [
     {
         path: '',
-        component: DashboardsBodyComponent,
+        component: ImageTilesDashboardComponent,
         resolve: {
-            requestData: DashboardsBodyResolver
+            requestData: ImageTilesDashboardResolver
         }
     }
 ];
