@@ -4,6 +4,7 @@ import { take, tap } from 'rxjs/operators';
 
 import { RepositoriesFabrica, SpinnerService, ImageTile } from '@app/core';
 import { ImageTileWindowsService } from '../image-tile';
+import { ImageTileState } from './image-tile-state';
 
 @Component({
     selector: 'app-image-tiles-dashboard',
@@ -13,18 +14,11 @@ import { ImageTileWindowsService } from '../image-tile';
 export class ImageTilesDashboardComponent implements OnInit
 {
     /**
-     * Image tiles.
+     * Image tiles states.
      *
-     * @type {ImageTile[]}
+     * @type {ImageTileState[]}
      */
-    public imageTiles: ImageTile[] = [];
-
-    /**
-     * Removed image tiles.
-     *
-     * @type {ImageTile[]}
-     */
-    public removedImageTiles: ImageTile[] = [];
+    public imageTileStates: ImageTileState[] = [];
 
     /**
      * Constructor.
@@ -55,7 +49,7 @@ export class ImageTilesDashboardComponent implements OnInit
                 tap(() => this.spinnerService.hide())
             )
             .subscribe(routeData => {
-                this.imageTiles = routeData.requestData;
+                this.imageTileStates = routeData.requestData.map((t: ImageTile) => new ImageTileState(t));
             });
     }
 
@@ -69,7 +63,7 @@ export class ImageTilesDashboardComponent implements OnInit
         this.imageTileWindowsService
             .openTileFormWindow(null)
             .pipe(take(1))
-            .subscribe(imageTile => this.imageTiles.push(imageTile));
+            .subscribe(imageTile => this.imageTileStates.push(new ImageTileState(imageTile).markAsNew()));
     }
 
     /**
@@ -79,17 +73,24 @@ export class ImageTilesDashboardComponent implements OnInit
      */
     public saveTilesChanges(): void
     {
-        this.imageTiles.map(t => this.repositoriesFabrica
-            .getImageTileRepository()
-            .save(t)
-            .subscribe(() => {})
-        );
+        this.imageTileStates.forEach(t => {
+            console.log(t)
+            if (t.isСhanged || t.isNew) {
+                this.repositoriesFabrica
+                    .getImageTileRepository()
+                    .save(t.tile)
+                    .pipe(take(1))
+                    .subscribe(() => {});
+            }
 
-        this.removedImageTiles.map(t => this.repositoriesFabrica
-            .getImageTileRepository()
-            .delete(t)
-            .subscribe(() => {})
-        );
+            if (t.toDelete) {
+                this.repositoriesFabrica
+                    .getImageTileRepository()
+                    .delete(t.tile)
+                    .pipe(take(1))
+                    .subscribe(() => {});
+            }
+        });
     }
 
     /**
@@ -105,10 +106,7 @@ export class ImageTilesDashboardComponent implements OnInit
                 take(1),
                 tap(() => this.spinnerService.hide())
             )
-            .subscribe(imageTiles => {
-                this.imageTiles = imageTiles;
-                this.removedImageTiles = [];
-            });
+            .subscribe(imageTiles => this.imageTileStates = imageTiles.map(t => new ImageTileState(t)));
     }
 
     /**
@@ -120,8 +118,7 @@ export class ImageTilesDashboardComponent implements OnInit
      */
     public removeTileHandler(imageTile: ImageTile): void
     {
-        this.removedImageTiles.push(imageTile);
-        this.imageTiles = this.imageTiles.filter(t => t !== imageTile);
+        this.imageTileStates = this.imageTileStates.map(t => imageTile == t.tile ? t.markToDelete() : t);
     }
 
     /**
@@ -134,6 +131,13 @@ export class ImageTilesDashboardComponent implements OnInit
      */
     public updateTileHandler(oldImageTile: ImageTile, updatedImageTile: ImageTile): void
     {
-        this.imageTiles = this.imageTiles.map (t => t === oldImageTile ? updatedImageTile : t);
+        this.imageTileStates = this.imageTileStates.map (t => {
+            if (t.tile === oldImageTile) {
+                t.tile = updatedImageTile;
+                t.markAsСhanged();
+            }
+
+            return t;
+        });
     }
 }

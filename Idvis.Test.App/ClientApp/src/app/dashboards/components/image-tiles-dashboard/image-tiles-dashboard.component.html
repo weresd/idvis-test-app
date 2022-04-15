@@ -5,11 +5,13 @@
         <app-toolbar-button icon="block" text="Cancel" (click)="cancelTilesChanges()"></app-toolbar-button>
     </app-toolbar>
     <div class="app-image-tiles-dashboard__tiles">
-        <app-image-tile
-            *ngFor="let imageTile of imageTiles"
-            [imageTile]="imageTile"
-            (remove)="removeTileHandler(imageTile)"
-            (update)="updateTileHandler(imageTile, $event)"
-        ></app-image-tile>
+        <ng-container *ngFor="let imageTileState of imageTileStates">
+            <app-image-tile
+                *ngIf="!imageTileState.toDelete"
+                [imageTile]="imageTileState.tile"
+                (remove)="removeTileHandler(imageTileState.tile)"
+                (update)="updateTileHandler(imageTileState.tile, $event)"
+            ></app-image-tile>
+        </ng-container>
     </div>
 </div>
