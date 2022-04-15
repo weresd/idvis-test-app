@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input,  Output } from '@angular/core';
 import { take } from 'rxjs/operators';
 
 import { ImageTile } from '@app/core';
@@ -54,7 +54,11 @@ export class ImageTileComponent
         this.imageTileWindowsService
             .openTileFormWindow(imageTile)
             .pipe(take(1))
-            .subscribe(imageTile => this.update.emit(imageTile));
+            .subscribe(imageTile => {
+                if (imageTile) {
+                    this.update.emit(imageTile);
+                }
+            });
     }
 
     /**
@@ -69,6 +73,10 @@ export class ImageTileComponent
         this.imageTileWindowsService
             .openTileRemoveConfirmationWindow(imageTile)
             .pipe(take(1))
-            .subscribe(answer => answer ? this.remove.emit(imageTile) : null);
+            .subscribe(isConfirmed => {
+                if (isConfirmed) {
+                    this.remove.emit(imageTile);
+                }
+            });
     }
 }
