@@ -13,13 +13,13 @@ import { RouterModule } from '@angular/router';
 import { CoreModule } from '@app/core';
 import { ConfirmDialogComponent, SharedModule } from '@app/shared';
 import { ImageTileComponent, ImageTileWindowsService, TileMenuComponent } from './components';
-import { ImageTilesDashboardComponent, ImageTilesDashboardResolver, TileFormDialogComponent } from './components';
+import { ImageTilesDashboardComponent, ImageTilesDashboardResolver, ImageTileFormDialogComponent } from './components';
 import { DashboardsRoutingModule } from './dashboards-routing.module';
 
 @NgModule({
     declarations: [
         ImageTilesDashboardComponent,
-        TileFormDialogComponent,
+        ImageTileFormDialogComponent,
         TileMenuComponent,
         ImageTileComponent
     ],
@@ -45,7 +45,7 @@ import { DashboardsRoutingModule } from './dashboards-routing.module';
     ],
     entryComponents: [
         ConfirmDialogComponent,
-        TileFormDialogComponent,
+        ImageTileFormDialogComponent,
     ]
 })
 export class DashboardsModule { }

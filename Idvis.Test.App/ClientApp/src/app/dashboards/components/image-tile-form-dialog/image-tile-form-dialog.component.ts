@@ -2,21 +2,21 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { Tile } from '@app/core';
+import { ImageTile } from '@app/core';
 
 @Component({
-    selector: 'app-tile-form-dialog',
-    templateUrl: './tile-form-dialog.component.html',
-    styleUrls: ['./tile-form-dialog.component.scss']
+    selector: 'app-image-tile-form-dialog',
+    templateUrl: './image-tile-form-dialog.component.html',
+    styleUrls: ['./image-tile-form-dialog.component.scss']
 })
-export class TileFormDialogComponent implements OnInit
+export class ImageTileFormDialogComponent implements OnInit
 {
     /**
-     * Editable tile.
+     * Editable image tile.
      *
-     * @type {Tile}
+     * @type {ImageTile}
      */
-    public tile: Tile;
+    public imageTile: ImageTile;
 
     /**
      * Form group.
@@ -32,11 +32,11 @@ export class TileFormDialogComponent implements OnInit
      * @param {any} data
      */
     public constructor(
-        public dialogRef: MatDialogRef<TileFormDialogComponent>,
+        public dialogRef: MatDialogRef<ImageTileFormDialogComponent>,
         @Inject(MAT_DIALOG_DATA) data: any
     )
     {
-        this.tile = data.tile === null ? new Tile() : data.tile;
+        this.imageTile = data.imageTile === null ? new ImageTile() : data.imageTile;
     }
 
     /**
@@ -48,20 +48,20 @@ export class TileFormDialogComponent implements OnInit
     }
 
     /**
-     * Resets the form of the tile.
+     * Resets the form of the image tile.
      *
      * @returns {void}
      */
     private resetForm(): void
     {
         this.formGroup = new FormGroup({
-            title: new FormControl(this.tile.title, [Validators.required, Validators.minLength(4)]),
-            img: new FormControl(this.tile.img, [Validators.required, Validators.minLength(4)]),
+            title: new FormControl(this.imageTile.title, [Validators.required, Validators.minLength(4)]),
+            img: new FormControl(this.imageTile.img, [Validators.required, Validators.minLength(4)]),
         });
     }
 
     /**
-     * Saves the tile data from the form.
+     * Saves the image tile data from the form.
      *
      * @returns {void}
      */
@@ -72,10 +72,10 @@ export class TileFormDialogComponent implements OnInit
             return;
         }
 
-        this.tile.title = this.formGroup.get('title').value;
-        this.tile.img = this.formGroup.get('img').value;
+        this.imageTile.title = this.formGroup.get('title').value;
+        this.imageTile.img = this.formGroup.get('img').value;
 
-        this.dialogRef.close(this.tile);
+        this.dialogRef.close(this.imageTile);
     }
 
     /**

@@ -1,12 +1,12 @@
 <div class="app-image-tile">
     <div class="app-image-tile__menu">
         <app-tile-menu>
-            <button mat-menu-item (click)="openEditTileFormWindow(tile)">
+            <button mat-menu-item (click)="openEditTileFormWindow(imageTile)">
                 <mat-icon color="accent">edit</mat-icon>
                 <span>Edit</span>
             </button>
             <mat-divider></mat-divider>
-            <button mat-menu-item (click)="removeTile(tile)">
+            <button mat-menu-item (click)="removeTile(imageTile)">
                 <mat-icon color="accent">delete</mat-icon>
                 <span>Delete</span>
             </button>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="app-image-tile__image">
-        {{ tile.title }}<br>
-        {{ tile.img }}
+        {{ imageTile.title }}<br>
+        {{ imageTile.img }}
     </div>
 </div>

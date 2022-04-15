@@ -1,4 +1,5 @@
 export * from './group';
+export * from './image-tile';
 export * from './permission';
 export * from './tile';
 export * from './user';

@@ -6,10 +6,10 @@
     </app-toolbar>
     <div class="app-image-tiles-dashboard__tiles">
         <app-image-tile
-            *ngFor="let tile of tiles"
-            [tile]="tile"
-            (remove)="removeTileHandler(tile)"
-            (update)="updateTileHandler(tile, $event)"
+            *ngFor="let imageTile of imageTiles"
+            [imageTile]="imageTile"
+            (remove)="removeTileHandler(imageTile)"
+            (update)="updateTileHandler(imageTile, $event)"
         ></app-image-tile>
     </div>
 </div>

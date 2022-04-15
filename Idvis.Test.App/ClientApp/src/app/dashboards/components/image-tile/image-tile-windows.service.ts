@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 
-import { Tile } from '@app/core';
+import { ImageTile } from '@app/core';
 import { ConfirmDialogComponent } from '@app/shared';
-import { TileFormDialogComponent } from '../tile-form-dialog';
+import { ImageTileFormDialogComponent } from '../image-tile-form-dialog';
 
 @Injectable()
 export class ImageTileWindowsService
@@ -22,18 +22,18 @@ export class ImageTileWindowsService
     /**
      * Opens a modal window for editing/creating a tile.
      *
-     * @param {Tile | null} tile
+     * @param {Tile | null} imageTile
      *
      * @returns {Observable<Tile>}
      */
-    public openTileFormWindow(tile: Tile | null): Observable<Tile>
+    public openTileFormWindow(imageTile: ImageTile | null): Observable<ImageTile>
     {
         return this.dialogService.open(
-            TileFormDialogComponent,
+            ImageTileFormDialogComponent,
             {
                 panelClass: 'app-custom-dialog',
                 width: '550px',
-                data: { tile: tile }
+                data: { imageTile: imageTile }
             }
         )
             .afterClosed();
@@ -42,15 +42,15 @@ export class ImageTileWindowsService
     /**
      * Opens a modal window to confirm the deletion of the tile.
      *
-     * @param {Tile} tile
+     * @param {ImageTile} imageTile
      *
      * @returns {Observable<Tile>}
      */
-    public openTileRemoveConfirmationWindow(tile: Tile): Observable<Tile>
+    public openTileRemoveConfirmationWindow(imageTile: ImageTile): Observable<ImageTile>
     {
         return this.dialogService.open(
             ConfirmDialogComponent,
-            { data: { confirmText: 'Are you sure you want to delete the "' + tile.title +'" tile?' } }
+            { data: { confirmText: 'Are you sure you want to delete the "' + imageTile.title +'" tile?' } }
         )
             .afterClosed();
     }

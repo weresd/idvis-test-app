@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { take } from 'rxjs/operators';
 
-import { Tile } from '@app/core';
+import { ImageTile } from '@app/core';
 import { ImageTileWindowsService } from './image-tile-windows.service';
 
 @Component({
@@ -12,25 +12,25 @@ import { ImageTileWindowsService } from './image-tile-windows.service';
 export class ImageTileComponent
 {
     /**
-     * Editable tile.
+     * Editable image tile.
      *
-     * @type {Tile}
+     * @type {ImageTile}
      */
-    @Input() public tile: Tile;
+    @Input() public imageTile: ImageTile;
 
     /**
      * "Remove" event emitter.
      *
-     * @type {EventEmitter<Tile>}
+     * @type {EventEmitter<ImageTile>}
      */
-    @Output() public remove: EventEmitter<Tile> = new EventEmitter<Tile>();
+    @Output() public remove: EventEmitter<ImageTile> = new EventEmitter<ImageTile>();
 
     /**
      * "Update" event emitter.
      *
-     * @type {EventEmitter<Tile>}
+     * @type {EventEmitter<ImageTile>}
      */
-    @Output() public update: EventEmitter<Tile> = new EventEmitter<Tile>();
+    @Output() public update: EventEmitter<ImageTile> = new EventEmitter<ImageTile>();
 
     /**
      * Constructor.
@@ -45,30 +45,30 @@ export class ImageTileComponent
     /**
      * Opens the tile editing window and triggers the update event.
      *
-     * @param {Tile} tile
+     * @param {ImageTile} imageTile
      *
      * @returns {void}
      */
-    public openEditTileFormWindow(tile: Tile): void
+    public openEditTileFormWindow(imageTile: ImageTile): void
     {
         this.imageTileWindowsService
-            .openTileFormWindow(tile)
+            .openTileFormWindow(imageTile)
             .pipe(take(1))
-            .subscribe(tile => this.update.emit(tile));
+            .subscribe(imageTile => this.update.emit(imageTile));
     }
 
     /**
      * Opens the delete confirmation window and triggers the delete event.
      *
-     * @param {Tile} tile
+     * @param {ImageTile} imageTile
      *
      * @returns {void}
      */
-    public removeTile(tile: Tile): void
+    public removeTile(imageTile: ImageTile): void
     {
         this.imageTileWindowsService
-            .openTileRemoveConfirmationWindow(tile)
+            .openTileRemoveConfirmationWindow(imageTile)
             .pipe(take(1))
-            .subscribe(answer => answer ? this.remove.emit(tile) : null);
+            .subscribe(answer => answer ? this.remove.emit(imageTile) : null);
     }
 }

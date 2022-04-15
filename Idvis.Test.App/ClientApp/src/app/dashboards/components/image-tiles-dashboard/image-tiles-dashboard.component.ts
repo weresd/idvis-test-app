@@ -2,7 +2,7 @@ import { OnInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { take, tap } from 'rxjs/operators';
 
-import { RepositoriesFabrica, SpinnerService, Tile } from '@app/core';
+import { RepositoriesFabrica, SpinnerService, ImageTile } from '@app/core';
 import { ImageTileWindowsService } from '../image-tile';
 
 @Component({
@@ -13,18 +13,18 @@ import { ImageTileWindowsService } from '../image-tile';
 export class ImageTilesDashboardComponent implements OnInit
 {
     /**
-     * Tiles.
+     * Image tiles.
      *
-     * @type {Tile[]}
+     * @type {ImageTile[]}
      */
-    public tiles: Tile[] = [];
+    public imageTiles: ImageTile[] = [];
 
     /**
-     * Removed tiles.
+     * Removed image tiles.
      *
-     * @type {Tile[]}
+     * @type {ImageTile[]}
      */
-    public removedTiles: Tile[] = [];
+    public removedImageTiles: ImageTile[] = [];
 
     /**
      * Constructor.
@@ -55,14 +55,12 @@ export class ImageTilesDashboardComponent implements OnInit
                 tap(() => this.spinnerService.hide())
             )
             .subscribe(routeData => {
-                this.tiles = routeData.requestData;
+                this.imageTiles = routeData.requestData;
             });
     }
 
     /**
      * Opens the tile add window and triggers the update event.
-     *
-     * @param {Tile} tile
      *
      * @returns {void}
      */
@@ -71,7 +69,7 @@ export class ImageTilesDashboardComponent implements OnInit
         this.imageTileWindowsService
             .openTileFormWindow(null)
             .pipe(take(1))
-            .subscribe(tile => this.tiles.push(tile));
+            .subscribe(imageTile => this.imageTiles.push(imageTile));
     }
 
     /**
@@ -81,14 +79,14 @@ export class ImageTilesDashboardComponent implements OnInit
      */
     public saveTilesChanges(): void
     {
-        this.tiles.map(t => this.repositoriesFabrica
-            .getTileRepository()
+        this.imageTiles.map(t => this.repositoriesFabrica
+            .getImageTileRepository()
             .save(t)
             .subscribe(() => {})
         );
 
-        this.removedTiles.map(t => this.repositoriesFabrica
-            .getTileRepository()
+        this.removedImageTiles.map(t => this.repositoriesFabrica
+            .getImageTileRepository()
             .delete(t)
             .subscribe(() => {})
         );
@@ -102,40 +100,40 @@ export class ImageTilesDashboardComponent implements OnInit
     public cancelTilesChanges(): void
     {
         this.spinnerService.show();
-        this.repositoriesFabrica.getTileRepository().find()
+        this.repositoriesFabrica.getImageTileRepository().find()
             .pipe(
                 take(1),
                 tap(() => this.spinnerService.hide())
             )
-            .subscribe(tiles => {
-                this.tiles = tiles;
-                this.removedTiles = [];
+            .subscribe(imageTiles => {
+                this.imageTiles = imageTiles;
+                this.removedImageTiles = [];
             });
     }
 
     /**
      * Image tile removal event handler.
      *
-     * @param {Tile} tile
+     * @param {ImageTiles} imageTile
      *
      * @returns {void}
      */
-    public removeTileHandler(tile: Tile): void
+    public removeTileHandler(imageTile: ImageTile): void
     {
-        this.removedTiles.push(tile);
-        this.tiles = this.tiles.filter(t => t !== tile);
+        this.removedImageTiles.push(imageTile);
+        this.imageTiles = this.imageTiles.filter(t => t !== imageTile);
     }
 
     /**
      * Image tile refresh event handler.
      *
-     * @param {Tile} oldTile
-     * @param {Tile} updatedtile
+     * @param {ImageTiles} oldImageTile
+     * @param {ImageTiles} updatedImageTile
      *
      * @returns {void}
      */
-    public updateTileHandler(oldTile: Tile, updatedtile: Tile): void
+    public updateTileHandler(oldImageTile: ImageTile, updatedImageTile: ImageTile): void
     {
-        this.tiles = this.tiles.map (t => t === oldTile ? updatedtile : t);
+        this.imageTiles = this.imageTiles.map (t => t === oldImageTile ? updatedImageTile : t);
     }
 }

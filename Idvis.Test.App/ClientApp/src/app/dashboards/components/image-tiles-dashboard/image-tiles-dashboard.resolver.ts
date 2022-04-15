@@ -35,7 +35,7 @@ export class ImageTilesDashboardResolver implements Resolve<any>
     {
         this.spinnerService.show();
 
-        return this.repositoriesFabrica.getTileRepository().find().pipe(
+        return this.repositoriesFabrica.getImageTileRepository().find().pipe(
             tap(() => this.titleService.setAppTitle('Dashboards').setPageTitle('New Dashboard'))
         );
     }

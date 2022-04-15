@@ -1,10 +1,10 @@
-<div class="app-tile-form-dialog">
+<div class="app-image-tile-form-dialog">
     <app-modal-form-frame
-        [title]="(tile.id === null ? 'Add' : 'Edit') + ' Image Tile'"
+        [title]="(imageTile.id === null ? 'Add' : 'Edit') + ' Image Tile'"
         (confirm)="save()"
         (cancel)="dialogRef.close(null)"
     >
-        <form class="app-tile-form-dialog__form" [formGroup]="formGroup" mat-dialog-content>
+        <form class="app-image-tile-form-dialog__form" [formGroup]="formGroup" mat-dialog-content>
             <mat-form-field appearance="fill" class="app-custom-input">
                 <mat-label>Image Source</mat-label>
                 <input matInput type="text" #img [formControl]="formGroup.get('img')">
