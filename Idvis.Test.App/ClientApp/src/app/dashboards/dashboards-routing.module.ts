@@ -5,11 +5,15 @@ import { ImageTilesDashboardComponent, ImageTilesDashboardResolver } from './com
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'images',
         component: ImageTilesDashboardComponent,
         resolve: {
             requestData: ImageTilesDashboardResolver
         }
+    },
+    {
+        path: '',
+        redirectTo: 'images'
     }
 ];
 

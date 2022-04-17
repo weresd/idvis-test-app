@@ -6,7 +6,7 @@ import { PageNotFoundComponent } from './core';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'user-management',
+        redirectTo: 'dashboards',
         pathMatch: 'full'
     },
     {
