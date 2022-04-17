@@ -7,15 +7,25 @@
         <form class="app-image-tile-form-dialog__form" [formGroup]="formGroup" mat-dialog-content>
             <mat-form-field appearance="fill" class="app-custom-input">
                 <mat-label>Image Source</mat-label>
-                <input matInput type="text" #img [formControl]="formGroup.get('img')">
+                <input matInput type="text" readonly="true" #img [formControl]="formGroup.get('img_name')" (click)="file.click()"/>
                 <button
                     matSuffix
                     mat-icon-button
                     *ngIf="img.value"
-                    (click)="clearField(formGroup.get('img'))"
+                    (click)="clearImageField()"
                 >
                     <mat-icon>close</mat-icon>
                 </button>
+                <input
+                    #file
+                    type="file"
+                    class="app-image-tile-form-dialog__hidden"
+                    (change)="changeImageHandler($event)"
+                    accept="image/png, image/jpeg"
+                />
+                <mat-error *ngIf="formGroup.get('img_name').touched && (formGroup.get('img_name').invalid || formGroup.get('image').invalid)">
+                    <div *ngIf="formGroup.get('img_name').errors.required || formGroup.get('image').errors.required">Image Source is required.</div>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -29,6 +39,10 @@
                 >
                     <mat-icon>close</mat-icon>
                 </button>
+                <mat-error *ngIf="formGroup.get('title').invalid && formGroup.get('title').touched">
+                    <div *ngIf="formGroup.get('title').errors.required">Image Title is required.</div>
+                    <div *ngIf="formGroup.get('title').errors.minlength">Image Title should be 3 character.</div>
+                </mat-error>
             </mat-form-field>
         </form>
     </app-modal-form-frame>

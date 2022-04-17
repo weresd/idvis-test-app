@@ -46,5 +46,9 @@
         mat-icon {
             color: mat.get-color-from-palette($accent);
         }
+
+        .mat-form-field-subscript-wrapper {
+            position: inherit;
+        }
     }
 }

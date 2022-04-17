@@ -4,4 +4,8 @@
         flex-direction: column;
         padding: 0.671875em 0.671875em 0;
     }
+
+    &__hidden {
+        display: none;
+    }
 }

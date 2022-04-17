@@ -24,7 +24,6 @@
     </div>
 
     <div class="app-image-tile__image">
-        {{ imageTile.title }}<br>
-        {{ imageTile.img }}
+        <img [src]="imageTile.image.src" [alt]="imageTile.title" />
     </div>
 </div>
