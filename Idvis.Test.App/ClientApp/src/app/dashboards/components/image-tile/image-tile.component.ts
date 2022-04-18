@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input,  Output } from '@angular/core';
 import { take } from 'rxjs/operators';
 
-import { ImageTile } from '@app/core';
+import { ImageTile, ImageTileLabel } from '@app/core';
 import { ImageTileWindowsService } from './image-tile-windows.service';
 
 @Component({
@@ -11,6 +11,25 @@ import { ImageTileWindowsService } from './image-tile-windows.service';
 })
 export class ImageTileComponent
 {
+    /**
+     * Image tile labels with fillers.
+     *
+     * @returns {ImageTileText[]}
+     */
+    public get tileLabels(): ImageTileLabel[]
+    {
+        let labels = [];
+
+        for (let position = 1; position < 25; position++)
+        {
+            let existedText = this.imageTile.labels.find(t => t.position == position);
+
+            labels.push(existedText instanceof ImageTileLabel ? existedText : new ImageTileLabel({ position: position}));
+        }
+
+        return labels;
+    }
+
     /**
      * Editable image tile.
      *

@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 
 import { Tile } from '../tile';
 import { ImageFile } from './image-file';
+import { ImageTileLabel } from './image-tile-label';
 
 export class ImageTile extends Tile
 {
@@ -11,6 +12,13 @@ export class ImageTile extends Tile
      * @type {string}
      */
     public image: ImageFile;
+
+    /**
+     * Image tile label.
+     *
+     * @type {ImageTileLabel[]}
+     */
+    public labels: ImageTileLabel[] = [];
 
     /**
      * Constructor.
@@ -23,9 +31,15 @@ export class ImageTile extends Tile
 
         this.image = new ImageFile();
 
+        if (data.labels && _.isArray(data.labels))
+        {
+            this.labels= data.labels;
+        }
+
         if (data.img)
         {
-            if (data.img instanceof ImageFile) {
+            if (data.img instanceof ImageFile)
+            {
                 this.image = data.img;
             }
 

@@ -11,6 +11,7 @@
         position: absolute;
         top: 0;
         right: 0;
+        z-index: 10;
     }
 
     &__image {
@@ -22,6 +23,32 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+    }
+
+    &__grid {
+        padding: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: stretch;
+        justify-content: space-evenly;
+
+        &-item {
+            height: calc(25% - 2px);
+            border: 1px dotted;
+            margin: 1px;
+            display: flex;
+            cursor: move;
+
+            &.cdk-drag-disabled {
+                cursor:  default;
+            }
         }
     }
 }

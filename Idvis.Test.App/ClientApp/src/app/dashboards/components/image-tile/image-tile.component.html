@@ -25,5 +25,14 @@
 
     <div class="app-image-tile__image">
         <img [src]="imageTile.image.src" [alt]="imageTile.title" />
+
+    </div>
+    <div cdkDropList class="app-image-tile__grid">
+        <ng-container *ngFor="let tileLabel of tileLabels">
+            <div cdkDrag class="app-image-tile__grid-item" [cdkDragDisabled]="!tileLabel.text && !tileLabel.unit" >
+                {{ tileLabel.text }}
+                {{ tileLabel.unit }}
+            </div>
+        </ng-container>
     </div>
 </div>
