@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 import { Tile } from '../tile';
 import { ImageFile } from './image-file';
-import { ImageTileLabel } from './image-tile-label';
+import { ImageTileText } from './image-tile-text';
 
 export class ImageTile extends Tile
 {
@@ -14,11 +14,11 @@ export class ImageTile extends Tile
     public image: ImageFile;
 
     /**
-     * Image tile label.
+     * Image tile text.
      *
-     * @type {ImageTileLabel[]}
+     * @type {ImageTileText[]}
      */
-    public labels: ImageTileLabel[] = [];
+    public texts: ImageTileText[] = [];
 
     /**
      * Constructor.
@@ -31,9 +31,9 @@ export class ImageTile extends Tile
 
         this.image = new ImageFile();
 
-        if (data.labels && _.isArray(data.labels))
+        if (data.texts && _.isArray(data.texts))
         {
-            this.labels= data.labels;
+            this.texts = data.texts.map(t => new ImageTileText(t));
         }
 
         if (data.img)

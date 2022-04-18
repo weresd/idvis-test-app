@@ -45,9 +45,15 @@
             margin: 1px;
             display: flex;
             cursor: move;
+            justify-content: center;
+            align-items: center;
 
             &.cdk-drag-disabled {
                 cursor:  default;
+            }
+
+            &-selected {
+                border-color: red;
             }
         }
     }

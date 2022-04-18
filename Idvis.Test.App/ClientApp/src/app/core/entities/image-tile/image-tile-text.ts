@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-export class ImageTileLabel
+export class ImageTileText
 {
     /**
      * Image tile label position.
@@ -10,11 +10,11 @@ export class ImageTileLabel
     public position: number;
 
     /**
-     * Image tile label text.
+     * Image tile label value.
      *
      * @type {string}
      */
-    public text: string;
+    public value: string;
 
     /**
      * Image tile label unit.
@@ -22,6 +22,16 @@ export class ImageTileLabel
      * @type {string}
      */
     public unit: string;
+
+    /**
+     * Is empty text flag.
+     *
+     * @returns {boolean}
+     */
+    public get isEmpty(): boolean
+    {
+        return (!this.value || this.value.length == 0) && (!this.unit || this.unit.length == 0);
+    }
 
     /**
      * Constructor.
@@ -35,12 +45,12 @@ export class ImageTileLabel
             this.position = data.position;
         }
 
-        if (data.text && _.isNumber(data.text))
+        if (data.value && _.isString(data.value))
         {
-            this.text = data.text;
+            this.value = data.value;
         }
 
-        if (data.unit && _.isNumber(data.unit))
+        if (data.unit && _.isString(data.unit))
         {
             this.unit = data.unit;
         }

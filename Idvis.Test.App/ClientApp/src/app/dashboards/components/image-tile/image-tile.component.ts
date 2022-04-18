@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input,  Output } from '@angular/core';
 import { take } from 'rxjs/operators';
 
-import { ImageTile, ImageTileLabel } from '@app/core';
+import { ImageTile, ImageTileText } from '@app/core';
 import { ImageTileWindowsService } from './image-tile-windows.service';
 
 @Component({
@@ -12,22 +12,29 @@ import { ImageTileWindowsService } from './image-tile-windows.service';
 export class ImageTileComponent
 {
     /**
-     * Image tile labels with fillers.
+     * Selected image tile text.
+     *
+     * @type {ImageTileText}
+     */
+    public selectedImageTileText: ImageTileText = null;
+
+    /**
+     * Image tile texts with fillers.
      *
      * @returns {ImageTileText[]}
      */
-    public get tileLabels(): ImageTileLabel[]
+    public get tileTexts(): ImageTileText[]
     {
-        let labels = [];
+        let texts = [];
 
         for (let position = 1; position < 25; position++)
         {
-            let existedText = this.imageTile.labels.find(t => t.position == position);
+            let existedText = this.imageTile.texts.find(t => t.position == position);
 
-            labels.push(existedText instanceof ImageTileLabel ? existedText : new ImageTileLabel({ position: position}));
+            texts.push(existedText instanceof ImageTileText ? existedText : new ImageTileText({ position: position}));
         }
 
-        return labels;
+        return texts;
     }
 
     /**
@@ -68,34 +75,97 @@ export class ImageTileComponent
      *
      * @returns {void}
      */
-    public openEditTileFormWindow(imageTile: ImageTile): void
+    public openEditImageTileFormWindow(imageTile: ImageTile): void
     {
         this.imageTileWindowsService
-            .openTileFormWindow(imageTile)
+            .openImageTileFormWindow(imageTile)
             .pipe(take(1))
             .subscribe(imageTile => {
-                if (imageTile) {
+                if (imageTile)
+                {
                     this.update.emit(imageTile);
                 }
             });
     }
 
     /**
-     * Opens the delete confirmation window and triggers the delete event.
+     * Opens the delete confirmation window and triggers the delete image tile event.
      *
      * @param {ImageTile} imageTile
      *
      * @returns {void}
      */
-    public removeTile(imageTile: ImageTile): void
+    public removeImageTile(imageTile: ImageTile): void
     {
         this.imageTileWindowsService
-            .openTileRemoveConfirmationWindow(imageTile)
+            .openImageTileRemoveConfirmationWindow(imageTile)
             .pipe(take(1))
             .subscribe(isConfirmed => {
-                if (isConfirmed) {
+                if (isConfirmed)
+                {
                     this.remove.emit(imageTile);
                 }
             });
+    }
+
+    /**
+     * Removes the selected image tile text.
+     *
+     * @returns {void}
+     */
+    public removeSelectedImageTileText(): void
+    {
+        if (this.selectedImageTileText === null)
+        {
+            return;
+        }
+
+        this.imageTile.texts = this.imageTile.texts.filter(t => t !== this.selectedImageTileText);
+        this.update.emit(this.imageTile);
+    }
+
+    /**
+     * Opens the tile editing window and triggers the update event.
+     *
+     * @returns {void}
+     */
+    public openEditImageTileTextFormWindow(): void
+    {
+        const imageTileText = this.tileTexts.find(l => l.isEmpty);
+
+        if (!imageTileText)
+        {
+            return;
+        }
+
+        this.imageTileWindowsService
+            .openImageTileTextEditWindow(imageTileText)
+            .pipe(take(1))
+            .subscribe(eventImageTileText => {
+                if (eventImageTileText)
+                {
+                    this.imageTile.texts.push(eventImageTileText);
+                    this.update.emit(this.imageTile);
+                }
+            });
+    }
+
+    /**
+     * Image tile text selection handler.
+     *
+     * @param {ImageTileText} imageTileText
+     *
+     * @returns {void}
+     */
+    public selectImageTileTextHandler(imageTileText: ImageTileText): void
+    {
+        if (this.selectedImageTileText === imageTileText || imageTileText.isEmpty)
+        {
+            this.selectedImageTileText = null;
+        }
+        else
+        {
+            this.selectedImageTileText = imageTileText;
+        }
     }
 }

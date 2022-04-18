@@ -61,7 +61,7 @@ export class ImageTilesDashboardComponent implements OnInit
     public openAddTileFormWindow(): void
     {
         this.imageTileWindowsService
-            .openTileFormWindow(null)
+            .openImageTileFormWindow(null)
             .pipe(take(1))
             .subscribe(imageTile => this.imageTileStates.push(new ImageTileState(imageTile).markAsNew()));
     }
@@ -74,7 +74,6 @@ export class ImageTilesDashboardComponent implements OnInit
     public saveTilesChanges(): void
     {
         this.imageTileStates.forEach(t => {
-            console.log(t)
             if (t.isСhanged || t.isNew) {
                 this.repositoriesFabrica
                     .getImageTileRepository()
