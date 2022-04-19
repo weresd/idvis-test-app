@@ -1,6 +1,6 @@
 import { OnInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { take, tap } from 'rxjs/operators';
+import { filter, take, tap } from 'rxjs/operators';
 
 import { RepositoriesFabrica, SpinnerService, ImageTile } from '@app/core';
 import { ImageTileWindowsService } from '../image-tile';
@@ -62,7 +62,10 @@ export class ImageTilesDashboardComponent implements OnInit
     {
         this.imageTileWindowsService
             .openImageTileFormWindow(null)
-            .pipe(take(1))
+            .pipe(
+                take(1),
+                filter(i => i instanceof ImageTile)
+            )
             .subscribe(imageTile => this.imageTileStates.push(new ImageTileState(imageTile).markAsNew()));
     }
 
