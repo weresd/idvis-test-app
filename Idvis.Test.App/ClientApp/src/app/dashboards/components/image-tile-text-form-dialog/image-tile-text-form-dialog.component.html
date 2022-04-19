@@ -3,35 +3,37 @@
         <form class="app-image-tile-text-form-dialog__form" [formGroup]="formGroup" mat-dialog-content>
             <mat-form-field appearance="fill" class="app-custom-input">
                 <mat-label>Value</mat-label>
-                <input matInput type="text" #value [formControl]="formGroup.get('value')" />
+                <input matInput type="text" #value [formControl]="formGroup.get('value')" (keyup.enter)="save()" />
                 <button
                     matSuffix
                     mat-icon-button
                     *ngIf="value.value"
                     (click)="clearField(formGroup.get('value'))"
+                    type="button"
                 >
                     <mat-icon>close</mat-icon>
                 </button>
                 <mat-error *ngIf="formGroup.get('value').touched && formGroup.get('value').invalid">
-                    <div *ngIf="formGroup.get('value').errors.required">Image Source is required.</div>
-                    <div *ngIf="formGroup.get('value').errors.minlength">Image Title should be 3 character.</div>
+                    <div *ngIf="formGroup.get('value').errors.required">Text value is required.</div>
+                    <div *ngIf="formGroup.get('value').errors.minlength">Text value should be 3 character.</div>
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Unit</mat-label>
-                <input matInput type="text" #unit [formControl]="formGroup.get('unit')" />
+                <input matInput type="text" #unit [formControl]="formGroup.get('unit')" (keyup.enter)="save()" />
                 <button
                     matSuffix
                     mat-icon-button
                     *ngIf="unit.value"
                     (click)="clearField(formGroup.get('unit'))"
+                    type="button"
                 >
                     <mat-icon>close</mat-icon>
                 </button>
                 <mat-error *ngIf="formGroup.get('unit').invalid && formGroup.get('unit').touched">
-                    <div *ngIf="formGroup.get('unit').errors.required">Image Title is required.</div>
-                    <div *ngIf="formGroup.get('unit').errors.minlength">Image Title should be 3 character.</div>
+                    <div *ngIf="formGroup.get('unit').errors.required">Text unit is required.</div>
+                    <div *ngIf="formGroup.get('unit').errors.minlength">Text unit should be 3 character.</div>
                 </mat-error>
             </mat-form-field>
         </form>

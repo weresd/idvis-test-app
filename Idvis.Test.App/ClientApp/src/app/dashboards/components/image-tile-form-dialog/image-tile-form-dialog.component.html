@@ -5,14 +5,15 @@
         (cancel)="dialogRef.close(null)"
     >
         <form class="app-image-tile-form-dialog__form" [formGroup]="formGroup" mat-dialog-content>
-            <mat-form-field appearance="fill" class="app-custom-input">
+            <mat-form-field appearance="fill" (click)="file.click()">
                 <mat-label>Image Source</mat-label>
-                <input matInput type="text" readonly="true" #img [formControl]="formGroup.get('img_name')" (click)="file.click()"/>
+                <input matInput type="text" readonly="true" #img [formControl]="formGroup.get('img_name')" (keyup.enter)="save()" />
                 <button
                     matSuffix
                     mat-icon-button
                     *ngIf="img.value"
-                    (click)="clearImageField()"
+                    type="button"
+                    (click)="clearField(formGroup.get('img_name'))"
                 >
                     <mat-icon>close</mat-icon>
                 </button>
@@ -23,18 +24,19 @@
                     (change)="changeImageHandler($event)"
                     accept="image/png, image/jpeg"
                 />
-                <mat-error *ngIf="formGroup.get('img_name').touched && (formGroup.get('img_name').invalid || formGroup.get('image').invalid)">
-                    <div *ngIf="formGroup.get('img_name').errors.required || formGroup.get('image').errors.required">Image Source is required.</div>
+                <mat-error *ngIf="formGroup.get('img_name').touched && formGroup.get('img_name').invalid">
+                    <div *ngIf="formGroup.get('img_name').errors.required">Image Source is required.</div>
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Image Title</mat-label>
-                <input matInput type="text" #title [formControl]="formGroup.get('title')">
+                <input matInput type="text" #title [formControl]="formGroup.get('title')" (keyup.enter)="save()" />
                 <button
                     matSuffix
                     mat-icon-button
                     *ngIf="title.value"
+                    type="button"
                     (click)="clearField(formGroup.get('title'))"
                 >
                     <mat-icon>close</mat-icon>

@@ -63,8 +63,7 @@ export class ImageTileFormDialogComponent implements OnInit
     {
         this.formGroup = new FormGroup({
             title: new FormControl(this.imageTile.title, [Validators.required, Validators.minLength(3)]),
-            img_name: new FormControl(this.imageTile.image.name, [Validators.required]),
-            image: new FormControl(this.imageTile.image.src, [Validators.required]),
+            img_name: new FormControl(this.imageTile.image.name, [Validators.required])
         });
     }
 
@@ -105,18 +104,6 @@ export class ImageTileFormDialogComponent implements OnInit
     }
 
     /**
-     * Clears a image form field.
-     *
-     * @returns {void}
-     */
-    public clearImageField(): void
-    {
-        this.formGroup.get('image').setValue('');
-        this.formGroup.get('img_name').setValue('');
-        this.formGroup.get('img_name').markAsUntouched();
-    }
-
-    /**
      * Change image handler.
      *
      * @param {} event
@@ -125,19 +112,12 @@ export class ImageTileFormDialogComponent implements OnInit
      */
     public changeImageHandler(event): void
     {
-        console.log(event);
         const target = event.target as HTMLInputElement;
 
         if (target && target.files && target.files[0] instanceof File)
         {
-            this.image = (event.target as HTMLInputElement).files[0];
-
-            const reader = new FileReader();
-            reader.onload = () => {
-                this.formGroup.get('image').setValue(reader.result as string);
-                this.formGroup.get('img_name').setValue(this.image.name);
-            }
-            reader.readAsDataURL(this.image);
+            this.image = target.files[0];
+            this.formGroup.get('img_name').setValue(this.image.name);
         }
     }
 }
