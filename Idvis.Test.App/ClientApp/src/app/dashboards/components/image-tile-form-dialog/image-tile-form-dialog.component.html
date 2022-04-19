@@ -5,7 +5,7 @@
         (cancel)="dialogRef.close(null)"
     >
         <form class="app-image-tile-form-dialog__form" [formGroup]="formGroup" mat-dialog-content>
-            <mat-form-field appearance="fill" (click)="file.click()">
+            <mat-form-field appearance="fill" (click)="openFileSelectionDialog($event)">
                 <mat-label>Image Source</mat-label>
                 <input matInput type="text" readonly="true" #img [formControl]="formGroup.get('img_name')" (keyup.enter)="save()" />
                 <button

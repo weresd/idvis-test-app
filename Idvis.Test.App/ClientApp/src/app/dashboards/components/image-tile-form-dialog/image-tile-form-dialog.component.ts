@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -31,6 +31,13 @@ export class ImageTileFormDialogComponent implements OnInit
      * @type {File}
      */
     public image: File;
+
+    /**
+     * Reference on file input.
+     *
+     * @type {ElementRef}
+     */
+    @ViewChild('file') public fileHtmlElement: ElementRef;
 
     /**
      * Constructor.
@@ -104,13 +111,31 @@ export class ImageTileFormDialogComponent implements OnInit
     }
 
     /**
-     * Change image handler.
+     * Opens a file selection dialog.
      *
-     * @param {} event
+     * @param {Event} event
      *
      * @returns {void}
      */
-    public changeImageHandler(event): void
+    public openFileSelectionDialog(event: Event): void
+    {
+        const target = event.target as HTMLElement;
+
+        if (target.nodeName === 'MAT-ICON') {
+            event.preventDefault();
+        } else {
+            this.fileHtmlElement.nativeElement.click();
+        }
+    }
+
+    /**
+     * Change image handler.
+     *
+     * @param {Event} event
+     *
+     * @returns {void}
+     */
+    public changeImageHandler(event: Event): void
     {
         const target = event.target as HTMLInputElement;
 
