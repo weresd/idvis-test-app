@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.PiechartTile
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.PiechartTile
 {
     /// <summary>
     /// Class PiechartTile.
@@ -13,7 +15,7 @@
         /// <summary>
         /// Aggregator.
         /// </summary>
-        public string Aggregator { get; set; }
+        public string? Aggregator { get; set; }
 
         /// <summary>
         /// Auto Refresh.
@@ -23,7 +25,7 @@
         /// <summary>
         /// Category Limit.
         /// </summary>
-        public int CategoryLimit { get; set; }
+        public int? CategoryLimit { get; set; }
 
         /// <summary>
         /// Show Others.
@@ -39,5 +41,11 @@
         /// Legend In Tiled Mode.
         /// </summary>
         public int LegendInTiledMode { get; set; }
+
+        /// <summary>
+        /// Tile.
+        /// </summary>
+        [ForeignKey("TileId")]
+        public Tile.Tile Tile { get; set; }
     }
 }

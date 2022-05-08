@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.Filter
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.Filter
 {
     /// <summary>
     /// Class Filter.
@@ -13,17 +15,17 @@
         /// <summary>
         /// Dashboard Id.
         /// </summary>
-        public int DashboardId { get; set; }
+        public int? DashboardId { get; set; }
 
         /// <summary>
         /// Datasource Id.
         /// </summary>
-        public int DatasourceId { get; set; }
+        public int? DatasourceId { get; set; }
 
         /// <summary>
         /// File Count.
         /// </summary>
-        public int FileCount { get; set; }
+        public int? FileCount { get; set; }
 
         /// <summary>
         /// Is Relative.
@@ -33,37 +35,37 @@
         /// <summary>
         /// Key.
         /// </summary>
-        public string Key { get; set; }
+        public string? Key { get; set; }
 
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Num End.
         /// </summary>
-        public float NumEnd { get; set; }
+        public float? NumEnd { get; set; }
 
         /// <summary>
         /// Num Multi End.
         /// </summary>
-        public string NumMultiEnd { get; set; }
+        public string? NumMultiEnd { get; set; }
 
         /// <summary>
         /// Num Multi Range End.
         /// </summary>
-        public float NumMultiRangeEnd { get; set; }
+        public float? NumMultiRangeEnd { get; set; }
 
         /// <summary>
         /// Num Multi Start.
         /// </summary>
-        public string NumMultiStart { get; set; }
+        public string? NumMultiStart { get; set; }
 
         /// <summary>
         /// Num Start.
         /// </summary>
-        public float NumStart { get; set; }
+        public float? NumStart { get; set; }
 
         /// <summary>
         /// Operator.
@@ -73,46 +75,64 @@
         /// <summary>
         /// Relative Date.
         /// </summary>
-        public string RelativeDate { get; set; }
+        public string? RelativeDate { get; set; }
 
         /// <summary>
         /// Str Prefix.
         /// </summary>
-        public string StrPrefix { get; set; }
+        public string? StrPrefix { get; set; }
 
         /// <summary>
         /// Str Values.
         /// </summary>
-        public string StrValues { get; set; }
+        public string? StrValues { get; set; }
 
         /// <summary>
         /// Text.
         /// </summary>
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// Tile Id.
         /// </summary>
-        public int TileId { get; set; }
+        public int? TileId { get; set; }
 
         /// <summary>
         /// Timestamp End.
         /// </summary>
-        public int TimestampEnd { get; set; }
+        public int? TimestampEnd { get; set; }
 
         /// <summary>
         /// Timestamp Start.
         /// </summary>
-        public int TimestampStart { get; set; }
+        public int? TimestampStart { get; set; }
 
         /// <summary>
         /// Work Shift End.
         /// </summary>
-        public string WorkShiftEnd { get; set; }
+        public string? WorkShiftEnd { get; set; }
 
         /// <summary>
         /// Work Shift Start.
         /// </summary>
-        public string WorkShiftStart { get; set; }
+        public string? WorkShiftStart { get; set; }
+
+        /// <summary>
+        /// Dashboard.
+        /// </summary>
+        [ForeignKey("DashboardId")]
+        public Dashboard.Dashboard? Dashboard { get; set; }
+
+        /// <summary>
+        /// Datasource.
+        /// </summary>
+        [ForeignKey("DatasourceId")]
+        public Datasource.Datasource? Datasource { get; set; }
+
+        /// <summary>
+        /// Tile.
+        /// </summary>
+        [ForeignKey("TileId")]
+        public Tile.Tile? Tile { get; set; }
     }
 }

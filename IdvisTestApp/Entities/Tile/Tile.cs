@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.Tile
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.Tile
 {
     /// <summary>
     /// Class Tile.
@@ -54,5 +56,17 @@
         /// Y.
         /// </summary>
         public int Y { get; set; }
+
+        /// <summary>
+        /// Dashboard.
+        /// </summary>
+        [ForeignKey("DashboardId")]
+        public Dashboard.Dashboard Dashboard { get; set; }
+
+        /// <summary>
+        /// Datasource.
+        /// </summary>
+        [ForeignKey("DatasourceId")]
+        public Datasource.Datasource? Datasource { get; set; }
     }
 }

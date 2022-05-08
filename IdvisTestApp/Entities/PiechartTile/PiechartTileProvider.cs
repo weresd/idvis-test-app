@@ -38,7 +38,8 @@ namespace IdvisTestApp.Entities.PiechartTile
                     .HasColumnName("TileId");
 
                 entity.Property(e => e.LegendInTiledMode)
-                    .HasColumnName("LegendInTiledMode");
+                    .HasColumnName("LegendInTiledMode")
+                    .HasDefaultValue(0);
             });
 
             return modelBuilder;

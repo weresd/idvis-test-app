@@ -32,16 +32,19 @@ namespace IdvisTestApp.Entities.LinechartTile
                     .HasColumnName("TileId");
 
                 entity.Property(e => e.LegendInTiledMode)
-                    .HasColumnName("LegendInTiledMode");
+                    .HasColumnName("LegendInTiledMode")
+                    .HasDefaultValue(0);
 
                 entity.Property(e => e.UseEvents)
-                    .HasColumnName("UseEvents");
+                    .HasColumnName("UseEvents")
+                    .HasDefaultValue(0);
 
                 entity.Property(e => e.QdrTimeMode)
                     .HasColumnName("QdrTimeMode");
 
                 entity.Property(e => e.LastFileSignals)
-                    .HasColumnName("LastFileSignals");
+                    .HasColumnName("LastFileSignals")
+                    .HasDefaultValue(0);
             });
 
             return modelBuilder;

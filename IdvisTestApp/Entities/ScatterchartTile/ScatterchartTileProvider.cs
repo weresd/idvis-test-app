@@ -35,7 +35,8 @@ namespace IdvisTestApp.Entities.ScatterchartTile
                     .HasColumnName("XAxisKey");
 
                 entity.Property(e => e.LegendInTiledMode)
-                    .HasColumnName("LegendInTiledMode");
+                    .HasColumnName("LegendInTiledMode")
+                    .HasDefaultValue(0);
             });
 
             return modelBuilder;

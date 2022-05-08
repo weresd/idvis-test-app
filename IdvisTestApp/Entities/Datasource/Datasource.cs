@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.Datasource
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.Datasource
 {
     /// <summary>
     /// Class Datasource.
@@ -18,17 +20,17 @@
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Table Or Store Name.
         /// </summary>
-        public string TableOrStoreName { get; set; }
+        public string? TableOrStoreName { get; set; }
 
         /// <summary>
         /// Dat Path From.
         /// </summary>
-        public string DatPathFrom { get; set; }
+        public string? DatPathFrom { get; set; }
 
         /// <summary>
         /// Dat Path Replace.
@@ -38,12 +40,12 @@
         /// <summary>
         /// Dat Path To.
         /// </summary>
-        public string DatPathTo { get; set; }
+        public string? DatPathTo { get; set; }
 
         /// <summary>
         /// Pdf Path From.
         /// </summary>
-        public string PdfPathFrom { get; set; }
+        public string? PdfPathFrom { get; set; }
 
         /// <summary>
         /// Pdf Path Replace.
@@ -53,11 +55,17 @@
         /// <summary>
         /// Pdf Path To.
         /// </summary>
-        public string PdfPathTo { get; set; }
+        public string? PdfPathTo { get; set; }
 
         /// <summary>
         /// Dat Password.
         /// </summary>
-        public string DatPassword { get; set; }
+        public string? DatPassword { get; set; }
+
+        /// <summary>
+        /// Datasource Connection.
+        /// </summary>
+        [ForeignKey("ConnectionId")]
+        public DatasourceConnection.DatasourceConnection DatasourceConnection { get; set; }
     }
 }

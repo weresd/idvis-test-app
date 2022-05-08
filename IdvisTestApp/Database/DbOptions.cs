@@ -1,4 +1,4 @@
-﻿namespace IdvisTestApp.Databases
+﻿namespace IdvisTestApp.Database
 {
     /// <summary>
     /// Class DbOptions.

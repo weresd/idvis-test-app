@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.BarchartTile
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.BarchartTile
 {
     /// <summary>
     /// Class BarchartTile.
@@ -18,7 +20,7 @@
         /// <summary>
         /// Aggregator.
         /// </summary>
-        public string Aggregator { get; set; }
+        public string? Aggregator { get; set; }
 
         /// <summary>
         /// Percentage Mode.
@@ -33,7 +35,7 @@
         /// <summary>
         /// Category Limit.
         /// </summary>
-        public int CategoryLimit { get; set; }
+        public int? CategoryLimit { get; set; }
 
         /// <summary>
         /// Show Others.
@@ -54,5 +56,11 @@
         /// Sort Mode.
         /// </summary>
         public int SortMode { get; set; }
+
+        /// <summary>
+        /// Tile.
+        /// </summary>
+        [ForeignKey("TileId")]
+        public Tile.Tile Tile { get; set; }
     }
 }

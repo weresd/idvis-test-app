@@ -35,7 +35,8 @@ namespace IdvisTestApp.Entities.HeatmapTile
                     .HasColumnName("TileId");
 
                 entity.Property(e => e.UseEvents)
-                    .HasColumnName("UseEvents");
+                    .HasColumnName("UseEvents")
+                    .HasDefaultValue(0);
 
                 entity.Property(e => e.QdrTimeMode)
                     .HasColumnName("QdrTimeMode");

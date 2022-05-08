@@ -35,7 +35,8 @@ namespace IdvisTestApp.Entities.Datasource
                     .HasColumnName("DatPathFrom");
 
                 entity.Property(e => e.DatPathReplace)
-                    .HasColumnName("DatPathReplace");
+                    .HasColumnName("DatPathReplace")
+                    .HasDefaultValue(0);
 
                 entity.Property(e => e.DatPathTo)
                     .HasColumnName("DatPathTo");
@@ -44,7 +45,8 @@ namespace IdvisTestApp.Entities.Datasource
                     .HasColumnName("PdfPathFrom");
 
                 entity.Property(e => e.PdfPathReplace)
-                    .HasColumnName("PdfPathReplace");
+                    .HasColumnName("PdfPathReplace")
+                    .HasDefaultValue(0);
 
                 entity.Property(e => e.PdfPathTo)
                     .HasColumnName("PdfPathTo");

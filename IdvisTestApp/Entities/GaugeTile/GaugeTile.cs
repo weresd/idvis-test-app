@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.GaugeTile
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.GaugeTile
 {
     /// <summary>
     /// Class GaugeTile.
@@ -13,7 +15,7 @@
         /// <summary>
         /// Aggregator.
         /// </summary>
-        public string Aggregator { get; set; }
+        public string? Aggregator { get; set; }
 
         /// <summary>
         /// Auto Refresh.
@@ -44,5 +46,11 @@
         /// Legend In Tiled Mode.
         /// </summary>
         public int LegendInTiledMode { get; set; }
+
+        /// <summary>
+        /// Tile.
+        /// </summary>
+        [ForeignKey("TileId")]
+        public Tile.Tile Tile { get; set; }
     }
 }

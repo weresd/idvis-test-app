@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.LinechartTile
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.LinechartTile
 {
     /// <summary>
     /// Class LinechartTile.
@@ -38,11 +40,17 @@
         /// <summary>
         /// Qdr Time Mode.
         /// </summary>
-        public int QdrTimeMode { get; set; }
+        public int? QdrTimeMode { get; set; }
 
         /// <summary>
         /// Last File Signals.
         /// </summary>
         public int LastFileSignals { get; set; }
+
+        /// <summary>
+        /// Tile.
+        /// </summary>
+        [ForeignKey("TileId")]
+        public Tile.Tile Tile { get; set; }
     }
 }

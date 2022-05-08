@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.ScatterchartTile
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.ScatterchartTile
 {
     /// <summary>
     /// Class ScatterchartTile.
@@ -28,11 +30,17 @@
         /// <summary>
         /// X Axis Key.
         /// </summary>
-        public string XAxisKey { get; set; }
+        public string? XAxisKey { get; set; }
 
         /// <summary>
         /// Legend In Tiled Mode.
         /// </summary>
         public int LegendInTiledMode { get; set; }
+
+        /// <summary>
+        /// Tile.
+        /// </summary>
+        [ForeignKey("TileId")]
+        public Tile.Tile Tile { get; set; }
     }
 }

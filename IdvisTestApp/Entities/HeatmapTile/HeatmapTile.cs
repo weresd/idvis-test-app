@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.HeatmapTile
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.HeatmapTile
 {
     /// <summary>
     /// Class HeatmapTile.
@@ -38,6 +40,12 @@
         /// <summary>
         /// Qdr Time Mode.
         /// </summary>
-        public int QdrTimeMode { get; set; }
+        public int? QdrTimeMode { get; set; }
+
+        /// <summary>
+        /// Tile.
+        /// </summary>
+        [ForeignKey("TileId")]
+        public Tile.Tile Tile { get; set; }
     }
 }

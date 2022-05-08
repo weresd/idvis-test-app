@@ -16,7 +16,7 @@ using IdvisTestApp.Entities.Series;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace IdvisTestApp.Databases
+namespace IdvisTestApp.Database
 {
     /// <summary>
     /// Class SQLiteContext.
@@ -53,7 +53,7 @@ namespace IdvisTestApp.Databases
         /// <param name="modelBuilder">Model builder.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("idvis_test_app")
+            modelBuilder
                 .AddAxisEntity("Axis")
                 .AddBarchartTileEntity("BarchartTiles")
                 .AddDashboardEntity("Dashboards")

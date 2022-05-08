@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace IdvisTestApp.Databases
+namespace IdvisTestApp.Database
 {
     /// <summary>
     /// Interface IDbContext.

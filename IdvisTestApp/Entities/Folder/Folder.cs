@@ -1,4 +1,6 @@
-﻿namespace IdvisTestApp.Entities.Folder
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace IdvisTestApp.Entities.Folder
 {
     /// <summary>
     /// Class Folder.
@@ -13,11 +15,17 @@
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Parent Id.
         /// </summary>
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
+
+        /// <summary>
+        /// Parent Folder.
+        /// </summary>
+        [ForeignKey("ParentId")]
+        public Folder? ParentFolder { get; set; }
     }
 }

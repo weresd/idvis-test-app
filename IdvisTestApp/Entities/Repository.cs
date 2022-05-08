@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using IdvisTestApp.Databases;
+using IdvisTestApp.Database;
 
 namespace IdvisTestApp.Entities
 {

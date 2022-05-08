@@ -13,7 +13,7 @@
         /// <summary>
         /// Host.
         /// </summary>
-        public string Host { get; set; }
+        public string? Host { get; set; }
 
         /// <summary>
         /// Integrated Security.
@@ -23,7 +23,7 @@
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Port.
@@ -33,12 +33,12 @@
         /// <summary>
         /// Realm.
         /// </summary>
-        public string Realm { get; set; }
+        public string? Realm { get; set; }
 
         /// <summary>
         /// Password.
         /// </summary>
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         /// <summary>
         /// Type.
@@ -48,6 +48,6 @@
         /// <summary>
         /// User.
         /// </summary>
-        public string User { get; set; }
+        public string? User { get; set; }
     }
 }

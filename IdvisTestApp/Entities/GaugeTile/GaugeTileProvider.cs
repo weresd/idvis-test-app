@@ -41,7 +41,8 @@ namespace IdvisTestApp.Entities.GaugeTile
                     .HasColumnName("TileId");
 
                 entity.Property(e => e.LegendInTiledMode)
-                    .HasColumnName("LegendInTiledMode");
+                    .HasColumnName("LegendInTiledMode")
+                    .HasDefaultValue(0);
             });
 
             return modelBuilder;
