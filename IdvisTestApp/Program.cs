@@ -1,6 +1,6 @@
 using IdvisTestApp.Database;
 using IdvisTestApp.Entities;
-using IdvisTestApp.Entities.Tile;
+using IdvisTestApp.Entities.Tiles;
 
 var builder = WebApplication.CreateBuilder(args);
 

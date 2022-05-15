@@ -1,5 +1,5 @@
 ﻿using IdvisTestApp.Entities;
-using IdvisTestApp.Entities.Tile;
+using IdvisTestApp.Entities.Tiles;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdvisTestApp.Controllers
